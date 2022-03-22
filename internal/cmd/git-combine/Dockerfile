@@ -1,4 +1,4 @@
-FROM golang:1.17.6-alpine AS builder
+FROM golang:1.17.6-alpine@sha256:519c827ec22e5cf7417c9ff063ec840a446cdd30681700a16cf42eb43823e27c AS builder
 
 WORKDIR /go/src/app
 
@@ -15,7 +15,7 @@ RUN go build .
 # Does not need to use sourcegraph-alpine since this is only deployed for
 # Sourcegraph.com.
 # alpine_base CHECK:ALPINE_OK
-FROM alpine:3.15 as alpine_base
+FROM alpine:3.15@sha256:d6d0a0eb4d40ef96f2310ead734848b9c819bb97c9d846385c4aca1767186cd4 as alpine_base
 
 RUN apk add --no-cache git ca-certificates tini
 
